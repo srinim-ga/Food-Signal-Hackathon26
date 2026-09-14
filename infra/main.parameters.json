@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "//": "DUMMY parameter values. TODO: Replace with actual Azure resource values during deployment.",
+  "parameters": {
+    "location": {
+      "value": "eastus"
+    },
+    "namePrefix": {
+      "value": "foodsignal"
+    },
+    "openAiDeploymentName": {
+      "value": "gpt-4.1"
+    },
+    "openAiModelName": {
+      "value": "gpt-4.1"
+    },
+    "openAiModelVersion": {
+      "value": "2025-04-14"
+    }
+  }
+}

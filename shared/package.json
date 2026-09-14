@@ -1,0 +1,24 @@
+{
+  "name": "@food-signal/shared",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared domain models, API contracts, and configuration constants for Food Signal.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist",
+    "test": "echo \"no shared tests yet\" && exit 0"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.5",
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "//": "Curated dish component ontology (Section 7.2 / 7.4). Small, reviewable, versioned knowledge layer used by the stub extractor and to enrich LLM output for common (esp. Indian) dishes. Retrieved facts are TYPICAL composition, never proof (Section 7.5).",
+  "//_extension": "Add dishes with aliases, typical/possible ingredients, and prep risks. Post-hackathon this can be replaced by Azure AI Search retrieval.",
+  "version": "1.0.0",
+  "dishes": [
+    {
+      "dishName": "Palak Paneer",
+      "aliases": ["palak paneer", "saag paneer"],
+      "region": "North Indian",
+      "typicalIngredients": ["spinach", "paneer", "onion", "ginger", "garlic", "spices"],
+      "possibleIngredients": ["cream", "butter", "ghee"],
+      "preparationRisks": ["dairy from paneer and possible cream"],
+      "highVariability": true
+    },
+    {
+      "dishName": "Chole Bhature",
+      "aliases": ["chole bhature", "chana bhatura"],
+      "region": "North Indian",
+      "typicalIngredients": ["chickpeas", "tomato", "onion", "spices", "wheat flour", "oil"],
+      "possibleIngredients": ["ghee", "yogurt"],
+      "preparationRisks": ["shared frying oil", "wheat in bhature"],
+      "highVariability": true
+    },
+    {
+      "dishName": "Vegetable Biryani",
+      "aliases": ["veg biryani", "vegetable biryani"],
+      "region": "Indian",
+      "typicalIngredients": ["rice", "vegetables", "spices"],
+      "possibleIngredients": ["ghee", "cashew", "yogurt", "cream"],
+      "preparationRisks": ["ghee", "nuts as garnish", "high sodium"],
+      "highVariability": true
+    },
+    {
+      "dishName": "Paneer Tikka",
+      "aliases": ["paneer tikka"],
+      "region": "North Indian",
+      "typicalIngredients": ["paneer", "yogurt", "spices", "bell pepper", "onion"],
+      "possibleIngredients": ["cream"],
+      "preparationRisks": ["dairy", "shared tandoor"],
+      "highVariability": false
+    },
+    {
+      "dishName": "Masala Dosa",
+      "aliases": ["dosa", "masala dosa"],
+      "region": "South Indian",
+      "typicalIngredients": ["rice", "lentils", "potato", "spices"],
+      "possibleIngredients": ["ghee", "butter"],
+      "preparationRisks": ["ghee on griddle"],
+      "highVariability": true
+    },
+    {
+      "dishName": "Samosa",
+      "aliases": ["samosa"],
+      "region": "Indian",
+      "typicalIngredients": ["wheat flour", "potato", "peas", "spices", "oil"],
+      "possibleIngredients": ["shared frying oil"],
+      "preparationRisks": ["wheat", "shared frying oil"],
+      "highVariability": false
+    },
+    {
+      "dishName": "Pav Bhaji",
+      "aliases": ["pav bhaji"],
+      "region": "Indian",
+      "typicalIngredients": ["mixed vegetables", "tomato", "wheat bread", "butter", "spices"],
+      "possibleIngredients": ["extra butter"],
+      "preparationRisks": ["dairy from butter", "wheat in pav", "high sodium"],
+      "highVariability": false
+    },
+    {
+      "dishName": "Pesto Pasta",
+      "aliases": ["pesto pasta", "pasta pesto"],
+      "region": "Italian",
+      "typicalIngredients": ["pasta", "basil", "olive oil", "parmesan"],
+      "possibleIngredients": ["pine nut", "walnut"],
+      "preparationRisks": ["tree nuts in pesto", "dairy from parmesan", "wheat in pasta"],
+      "highVariability": true
+    },
+    {
+      "dishName": "Shrimp Ramen",
+      "aliases": ["shrimp ramen", "prawn ramen"],
+      "region": "Japanese",
+      "typicalIngredients": ["shrimp", "noodles", "broth", "soy sauce"],
+      "possibleIngredients": ["fish sauce", "egg"],
+      "preparationRisks": ["shellfish", "wheat noodles", "high sodium"],
+      "highVariability": false
+    },
+    {
+      "dishName": "Grilled Chicken Salad",
+      "aliases": ["grilled chicken salad", "chicken salad"],
+      "region": "Western",
+      "typicalIngredients": ["chicken", "lettuce", "tomato", "dressing"],
+      "possibleIngredients": ["cheese", "croutons", "nuts"],
+      "preparationRisks": ["dairy or nuts in toppings"],
+      "highVariability": false
+    }
+  ]
+}

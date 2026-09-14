@@ -1,0 +1,27 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "//": "Copy this file to local.settings.json for local development.",
+    "//_ALL_VALUES_BELOW_ARE_DUMMY": "TODO: Replace with actual Azure resource values during deployment. Never commit real secrets.",
+
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+
+    "USE_STUB_EXTRACTOR": "true",
+
+    "AZURE_OPENAI_ENDPOINT": "https://dummy-openai-endpoint.openai.azure.com",
+    "AZURE_OPENAI_API_KEY": "dummy-openai-api-key",
+    "AZURE_OPENAI_DEPLOYMENT": "gpt-4.1",
+    "AZURE_OPENAI_API_VERSION": "2024-10-21",
+
+    "KEYVAULT_NAME": "dummy-keyvault",
+    "KEYVAULT_URI": "https://dummy-keyvault.vault.azure.net",
+
+    "MAX_UPLOAD_BYTES": "10485760",
+    "MODEL_TIMEOUT_MS": "30000"
+  },
+  "Host": {
+    "CORS": "*"
+  }
+}

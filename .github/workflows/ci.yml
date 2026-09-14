@@ -1,0 +1,38 @@
+name: CI
+
+# Hosted GitHub Actions runners are disabled for this org, so this workflow is
+# set to manual-only to avoid failing on every push. Run tests locally instead
+# (see README). Re-enable the push/pull_request triggers if runners are added.
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Build the shared contracts first so api/frontend can resolve types.
+      - name: Build shared
+        run: npm run build:shared
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Build all
+        run: npm run build
+
+      # Tests run fully offline: USE_STUB_EXTRACTOR keeps Azure OpenAI out of CI.
+      - name: Test
+        run: npm test
+        env:
+          USE_STUB_EXTRACTOR: "true"

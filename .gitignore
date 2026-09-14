@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+build/
+**/dist/
+**/build/
+*.tsbuildinfo
+
+# Azure Functions
+api/local.settings.json
+bin/
+obj/
+
+# Environment / secrets (NEVER commit real values)
+.env
+.env.local
+.env.*.local
+**/local.settings.json
+appsettings.*.local.json
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# Test coverage
+coverage/
+**/coverage/
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# PWA generated service worker (if using vite-plugin-pwa auto-generation)
+frontend/dev-dist/

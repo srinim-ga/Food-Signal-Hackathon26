@@ -1,0 +1,105 @@
+{
+  "//": "Deterministic rule set (Section 8.3.1). Each rule maps a profile constraint to conflicting concepts and the classification to apply given the ingredient source. Data-driven and testable without the LLM.",
+  "//_semantics": "if = '<kind>:<value>' matches the user's profile. conceptMatches = normalized concepts (from aliasMap) that conflict. whenSource = which ingredient sources trigger this rule. result = classification to apply. The priority resolver picks the most severe fired result.",
+  "rules": [
+    {
+      "id": "allergy-stated-avoid",
+      "if": "allergy:*",
+      "conceptMatches": ["__allergy_concept__"],
+      "whenSource": ["stated"],
+      "result": "Avoid",
+      "reasonTemplate": "Contains {concept}, which conflicts with your {constraint} allergy.",
+      "questionTemplate": "Does the {dish} contain {concept}?"
+    },
+    {
+      "id": "allergy-inferred-caution",
+      "if": "allergy:*",
+      "conceptMatches": ["__allergy_concept__"],
+      "whenSource": ["typical", "possible"],
+      "result": "Caution",
+      "reasonTemplate": "May contain {concept}, which conflicts with your {constraint} allergy.",
+      "questionTemplate": "Does the {dish} contain {concept} or is it prepared near it?"
+    },
+    {
+      "id": "restriction-vegetarian",
+      "if": "restriction:vegetarian",
+      "conceptMatches": ["meat", "poultry", "fish", "shellfish", "pork"],
+      "whenSource": ["stated", "typical"],
+      "result": "Avoid",
+      "reasonTemplate": "Contains {concept}, which conflicts with a vegetarian restriction.",
+      "questionTemplate": "Is the {dish} prepared without {concept}?"
+    },
+    {
+      "id": "restriction-vegan",
+      "if": "restriction:vegan",
+      "conceptMatches": ["meat", "poultry", "fish", "shellfish", "pork", "dairy", "egg"],
+      "whenSource": ["stated", "typical"],
+      "result": "Avoid",
+      "reasonTemplate": "Contains {concept}, which conflicts with a vegan restriction.",
+      "questionTemplate": "Can the {dish} be made without {concept}?"
+    },
+    {
+      "id": "restriction-halal",
+      "if": "restriction:halal",
+      "conceptMatches": ["pork"],
+      "whenSource": ["stated", "typical", "possible"],
+      "result": "Avoid",
+      "reasonTemplate": "Contains {concept}, which conflicts with a halal restriction.",
+      "questionTemplate": "Is the {dish} halal and free of {concept}?"
+    },
+    {
+      "id": "restriction-glutenfree",
+      "if": "restriction:gluten-free",
+      "conceptMatches": ["wheat", "gluten"],
+      "whenSource": ["stated", "typical"],
+      "result": "Avoid",
+      "reasonTemplate": "Contains {concept}, which conflicts with a gluten-free restriction.",
+      "questionTemplate": "Is the {dish} gluten-free?"
+    },
+    {
+      "id": "restriction-glutenfree-possible",
+      "if": "restriction:gluten-free",
+      "conceptMatches": ["gluten", "wheat", "possible_wheat"],
+      "whenSource": ["possible"],
+      "result": "Caution",
+      "reasonTemplate": "May contain {concept}; confirm the {dish} is gluten-free.",
+      "questionTemplate": "Is the {dish} prepared gluten-free without shared surfaces?"
+    },
+    {
+      "id": "restriction-lactosefree",
+      "if": "restriction:lactose-free",
+      "conceptMatches": ["dairy"],
+      "whenSource": ["stated", "typical"],
+      "result": "Avoid",
+      "reasonTemplate": "Contains {concept}, which conflicts with a lactose-free restriction.",
+      "questionTemplate": "Can the {dish} be prepared without dairy?"
+    },
+    {
+      "id": "diet-low-sodium",
+      "if": "diet:low-sodium",
+      "conceptMatches": ["high_sodium"],
+      "whenSource": ["stated", "typical", "possible"],
+      "result": "Caution",
+      "reasonTemplate": "May be high in sodium, which conflicts with a low-sodium preference.",
+      "questionTemplate": "Can the {dish} be prepared with less salt?"
+    },
+    {
+      "id": "diet-low-sugar",
+      "if": "diet:low-sugar",
+      "conceptMatches": ["high_sugar"],
+      "whenSource": ["stated", "typical", "possible"],
+      "result": "Caution",
+      "reasonTemplate": "May be high in sugar, which conflicts with a low-sugar preference.",
+      "questionTemplate": "Is the {dish} prepared with added sugar?"
+    },
+    {
+      "id": "diet-avoid-spicy",
+      "if": "diet:avoid-spicy",
+      "conceptMatches": ["spicy"],
+      "whenSource": ["stated", "typical", "possible"],
+      "result": "Caution",
+      "reasonTemplate": "May be spicy, which conflicts with a spicy-food avoidance preference.",
+      "questionTemplate": "Can the {dish} be made mild?"
+    }
+  ]
+}
